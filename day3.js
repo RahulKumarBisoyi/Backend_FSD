@@ -36,3 +36,24 @@ async function test() {
 test();
 
 console.log("5");
+
+/*create promises that will print username and pass using and if username and pass not found then it will call reject state and print error.*/
+
+const login = new Promise((resolve, reject) => {
+    let username = "Rahul";
+    let password = "12345";
+
+    if (username === "Rahul" && password === "12345") {
+        resolve("Login Successful");
+    } else {
+        reject("Invalid Username or Password");
+    }
+});
+
+login
+    .then((message) => {
+        console.log(message);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
