@@ -57,3 +57,16 @@ login
     .catch((error) => {
         console.log(error);
     });
+
+async function test(){
+    console.log("message:2");
+    const response=await fetch("./student.json");
+    console.log()
+    const stdn=await response.json();
+    return Stdn;
+    console.log("message:3");
+
+
+}
+test()
+console.log()
