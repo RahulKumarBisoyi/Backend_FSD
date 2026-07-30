@@ -58,15 +58,16 @@ login
         console.log(error);
     });
 
-async function test(){
+async function test2(){
     console.log("message:2");
     const response=await fetch("./student.json");
-    console.log()
+    console.log(response.status);
     const stdn=await response.json();
-    return Stdn;
     console.log("message:3");
-
+    return stdn;
+    
 
 }
-test()
-console.log()
+test2().then((res)=>{
+    console.log(res)
+});
