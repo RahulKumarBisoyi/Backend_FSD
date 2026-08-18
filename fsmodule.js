@@ -2,54 +2,72 @@ import fs from "fs/promises";
 
 const fileName = "student.txt";
 
-// Create File
+// 1. CREATE
 async function createFile() {
     try {
-        await fs.writeFile(fileName, "Name: Rahul\nCourse: B.Tech CSE", "utf8");
+        await fs.writeFile(
+            fileName,
+            "Name: Satwik\nCourse: B.Tech CSE",
+            "utf8"
+        );
+
         console.log("File created successfully");
     } catch (error) {
-        console.log("Error creating file:", error);
+        console.log("Error:", error.message);
     }
 }
 
-// Read File
-async function readFile() {
-    try {
-        const data = await fs.readFile(fileName, "utf8");
-        console.log("File content:");
-        console.log(data);
-    } catch (error) {
-        console.log("Error reading file:", error);
-    }
-}
 
-// Update File
-async function updateFile() {
-    try {
-        await fs.appendFile(fileName, "\nYear: 2nd Year", "utf8");
-        console.log("File updated successfully");
-    } catch (error) {
-        console.log("Error updating file:", error);
-    }
-}
+// // 2. READ
+// async function readFile() {
+//     try {
+//         const data = await fs.readFile(fileName, "utf8");
 
-// Delete File
-async function deleteFile() {
-    try {
-        await fs.unlink(fileName);
-        console.log("File deleted successfully");
-    } catch (error) {
-        console.log("Error deleting file:", error);
-    }
-}
+//         console.log("\nFile Content:");
+//         console.log(data);
+//     } catch (error) {
+//         console.log("Error:", error.message);
+//     }
+// }
 
-// Execute functions
+
+// // 3. UPDATE
+// async function updateFile() {
+//     try {
+//         await fs.appendFile(
+//             fileName,
+//             "\nCollege: ABES Engineering College............",
+//             "utf8"
+//         );
+
+//         console.log("\nFile updated successfully");
+//     } catch (error) {
+//         console.log("Error:", error.message);
+//     }
+// }
+
+
+// // 4. DELETE
+// async function deleteFile() {
+//     try {
+//         await fs.unlink(fileName);
+
+//         console.log("\nFile deleted successfully");
+//     } catch (error) {
+//         console.log("Error:", error.message);
+//     }
+// }
+
+// Execute CRUD operations
 async function main() {
+
     await createFile();
-    await readFile();
-    await updateFile();
-    await readFile();
-    await deleteFile();
+
+    // await readFile();
+
+    // await updateFile();
+
+    // await deleteFile();
 }
 
 main();
