@@ -65,8 +65,6 @@ async function test2(){
     const stdn=await response.json();
     console.log("message:3");
     return stdn;
-    
-
 }
 test2().then((res)=>{
     console.log(res)
