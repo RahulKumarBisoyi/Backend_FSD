@@ -1,0 +1,47 @@
+[
+  {
+    "id": 3,
+    "name": "Gaming Headphones",
+    "price": 1999
+  },
+  {
+    "id": 4,
+    "name": "Laptop Stand",
+    "price": 999
+  },
+  {
+    "id": 6,
+    "name": "Smart Watch",
+    "price": 2999
+  },
+  {
+    "id": 7,
+    "name": "Bluetooth Speaker",
+    "price": 1499
+  },
+  {
+    "id": 8,
+    "name": "Power Bank",
+    "price": 1299
+  },
+  {
+    "id": 10,
+    "name": "Laptop Backpack",
+    "price": 1199
+  },
+  {
+    "id": 11,
+    "name": "lenevo",
+    "price": "147000"
+  },
+  {
+    "id": 12,
+    "name": "Keyboard",
+    "price": 1500
+  },
+  {
+    "id": 13,
+    "name": "KeyBoard",
+    "price": "2500"
+  }
+]
