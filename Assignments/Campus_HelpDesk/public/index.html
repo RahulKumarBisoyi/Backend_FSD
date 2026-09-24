@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Help Desk // Cyber-Dispatch Portal</title>
+  <!-- Google Fonts: Space Grotesk (Headers) + JetBrains Mono (Codes) + Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient High-Tech Atmosphere Background -->
+  <div class="grid-overlay"></div>
+  <div class="aurora-orb orb-1"></div>
+  <div class="aurora-orb orb-2"></div>
+  <div class="aurora-orb orb-3"></div>
+
+  <!-- Toast Notification System -->
+  <div id="toast" class="toast hidden"></div>
+
+  <div class="terminal-container">
+    <!-- Top System Navigation / HUD Bar -->
+    <header class="hud-header">
+      <div class="brand-area">
+        <div class="brand-glyph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+          <span class="glyph-radar"></span>
+        </div>
+        <div>
+          <div class="brand-title">
+            CAMPUS<span>DESK</span>
+            <span class="live-pill"><span class="blink-dot"></span>SYS-ONLINE</span>
+          </div>
+          <p class="brand-sub">Central Campus Operations & Student Help Dispatch</p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics HUD + Global Download Button -->
+      <div class="hud-actions">
+        <div class="metrics-deck">
+          <div class="metric-chip">
+            <span class="chip-label">LOGGED</span>
+            <span class="chip-val" id="statTotal">0</span>
+          </div>
+          <div class="metric-chip chip-amber">
+            <span class="chip-label">PENDING</span>
+            <span class="chip-val" id="statPending">0</span>
+          </div>
+          <div class="metric-chip chip-crimson">
+            <span class="chip-label">CRITICAL</span>
+            <span class="chip-val" id="statHigh">0</span>
+          </div>
+        </div>
+
+        <!-- Download All Requests Text File Button -->
+        <a href="/api/requests/download" class="btn btn-export" id="exportAllBtn" download="campus_requests_summary.txt" title="Download complete database as a text file">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Export Log (.txt)</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Dual-Grid Interface -->
+    <main class="console-grid">
+      <!-- Left Panel: Incident Submission Console -->
+      <section class="console-panel left-panel">
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-tag">[ DISPATCH ENTRY ]</div>
+            <h2 id="formTitle">Log New Incident</h2>
+            <p id="formSubtitle">Transmit a campus problem or request to the dispatch queue.</p>
+          </div>
+
+          <form id="requestForm" autocomplete="off">
+            <!-- Hidden ID for Updates -->
+            <input type="hidden" id="requestId">
+
+            <!-- Student Name -->
+            <div class="form-group">
+              <label for="studentName">
+                STUDENT NAME <span class="req">*</span>
+              </label>
+              <div class="input-shell">
+                <span class="shell-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </span>
+                <input type="text" id="studentName" name="studentName" placeholder="Enter full name" required>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">
+                CAMPUS EMAIL <span class="req">*</span>
+              </label>
+              <div class="input-shell">
+                <span class="shell-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <input type="email" id="email" name="email" placeholder="student@campus.edu" required>
+              </div>
+            </div>
+
+            <!-- Category & Priority Row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="category">
+                  CATEGORY <span class="req">*</span>
+                </label>
+                <div class="input-shell">
+                  <select id="category" name="category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Academic">🎓 Academic</option>
+                    <option value="Hostel">🏢 Hostel & Housing</option>
+                    <option value="Maintenance">🛠️ Maintenance</option>
+                    <option value="Library">📚 Library</option>
+                    <option value="IT Services">💻 IT & Wi-Fi</option>
+                    <option value="Other">📌 Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="priority">
+                  PRIORITY LEVEL <span class="req">*</span>
+                </label>
+                <div class="input-shell priority-shell">
+                  <select id="priority" name="priority" required>
+                    <option value="Low">🟢 Low Priority</option>
+                    <option value="Medium" selected>🟡 Medium Priority</option>
+                    <option value="High">🔴 Critical / High</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Problem Description -->
+            <div class="form-group">
+              <label for="description">
+                PROBLEM DESCRIPTION <span class="req">*</span>
+              </label>
+              <textarea id="description" name="description" rows="4" placeholder="Detail the exact campus issue, location, room number, or equipment..." required></textarea>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="form-actions">
+              <button type="submit" id="submitBtn" class="btn btn-transmit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+                <span>TRANSMIT DISPATCH</span>
+              </button>
+              <button type="button" id="cancelEditBtn" class="btn btn-abort hidden">
+                ABORT EDIT
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Right Panel: Live Queue / Dispatch Feed -->
+      <section class="console-panel right-panel">
+        <div class="panel-box feed-box">
+          <!-- Command Toolbar -->
+          <div class="feed-toolbar">
+            <div class="toolbar-title-wrap">
+              <div class="panel-tag">[ QUEUE MONITOR ]</div>
+              <div class="title-with-pill">
+                <h2>Active Dispatches</h2>
+                <span class="count-pill" id="countBadge">0 Active</span>
+              </div>
+            </div>
+
+            <div class="toolbar-filters">
+              <!-- Search Console -->
+              <div class="search-shell">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search by student, ID, or keywords...">
+              </div>
+
+              <!-- Priority Filters -->
+              <div class="filter-deck">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn btn-filter-high" data-filter="High">CRITICAL</button>
+                <button class="filter-btn btn-filter-med" data-filter="Medium">MEDIUM</button>
+                <button class="filter-btn btn-filter-low" data-filter="Low">LOW</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Feed Cards Container -->
+          <div id="requestsList" class="requests-feed">
+            <!-- Rendered by script.js -->
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
