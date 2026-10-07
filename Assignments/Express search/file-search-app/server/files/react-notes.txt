@@ -1,0 +1,5 @@
+React.js Quick Revision:
+- React is a declarative component-based JavaScript library for building user interfaces.
+- Uses Virtual DOM for fast rendering.
+- State and Lifecycle managed using Hooks (useState, useEffect).
+- Props allow passing data from parent to child components.

@@ -1,0 +1,5 @@
+JavaScript Core Concepts:
+- ECMAScript standards (ES6+: let, const, arrow functions, promises, async/await)
+- Event Loop, Call Stack, Callback Queue
+- Array methods: map, filter, reduce, includes
+- Node.js event-driven architecture and asynchronous non-blocking I/O

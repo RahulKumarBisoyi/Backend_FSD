@@ -1,0 +1,5 @@
+These are general study notes for college exams.
+Topics covered:
+1. Basics of Web Architecture
+2. Client-Server Communication
+3. RESTful API Principles

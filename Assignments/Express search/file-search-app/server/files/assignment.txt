@@ -1,0 +1,7 @@
+College Full Stack Development Assignment:
+Title: File Search and Download System
+Due Date: Next Friday
+Tasks:
+- Create Express.js backend with search and download APIs
+- Build React + Vite frontend with responsive UI
+- Implement file reading with fs and path modules
