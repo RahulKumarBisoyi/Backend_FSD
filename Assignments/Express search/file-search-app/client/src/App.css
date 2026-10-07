@@ -1,0 +1,240 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+
+  /* Vibrant gradient background */
+  background: linear-gradient(135deg, #6a0dad 0%, #3a7bd5 45%, #e91e8c 100%);
+}
+
+/* Outer centering wrapper */
+.app-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main white card */
+.card {
+  background: rgba(255, 255, 255, 0.97);
+  width: 100%;
+  max-width: 700px;
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Heading */
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+/* Subtitle */
+.subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Search bar row */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+/* Search input */
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 20px;
+  font-size: 15px;
+  border: 2px solid #d0d0e8;
+  border-radius: 50px;
+  outline: none;
+  color: #333;
+  background: #f8f8ff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  border-color: #3a7bd5;
+  box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.15);
+  background: #fff;
+}
+
+/* Shared button */
+.btn {
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Search button — blue gradient */
+.btn-search {
+  background: linear-gradient(135deg, #3a7bd5, #6a0dad);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(58, 123, 213, 0.4);
+}
+
+.btn-search:hover {
+  box-shadow: 0 6px 20px rgba(58, 123, 213, 0.55);
+  background: linear-gradient(135deg, #2e6cc7, #5a00c0);
+}
+
+/* Clear button — grey */
+.btn-clear {
+  background: #e0e0e0;
+  color: #555;
+}
+
+.btn-clear:hover {
+  background: #cccccc;
+}
+
+/* Download button — green gradient */
+.btn-download {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  color: #fff;
+  padding: 9px 20px;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(17, 153, 142, 0.35);
+  flex-shrink: 0;
+}
+
+.btn-download:hover {
+  background: linear-gradient(135deg, #0e8278, #2fcc6a);
+  box-shadow: 0 6px 16px rgba(17, 153, 142, 0.5);
+}
+
+/* Available Files section */
+.files-section {
+  border-top: 1px solid #eee;
+  padding-top: 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+/* File list */
+.file-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Each file row */
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e8e8f0;
+  border-radius: 12px;
+  padding: 14px 20px;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.file-item:hover {
+  box-shadow: 0 4px 14px rgba(58, 123, 213, 0.1);
+  transform: translateY(-1px);
+}
+
+/* File icon emoji + filename together */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.file-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.file-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+  word-break: break-all;
+}
+
+/* Status messages */
+.status-message {
+  text-align: center;
+  color: #777;
+  font-size: 15px;
+  padding: 30px 0;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+/* Mobile responsive */
+@media (max-width: 540px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-download {
+    width: 100%;
+    text-align: center;
+  }
+}
